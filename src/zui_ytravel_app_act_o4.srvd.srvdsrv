@@ -1,0 +1,16 @@
+@EndUserText: {
+  label: 'Service Definition ZC_YTRAVEL_APP_ACT'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_YTRAVEL_APP_ACT'
+  }
+}
+define service ZUI_YTRAVEL_APP_ACT_O4
+  provider contracts odata_v4_ui {
+  expose ZC_YTRAVEL_APP_ACT;
+  expose /DMO/I_Overall_Status_VH;
+  expose /DMO/I_Overall_Status_VH_Text;
+  expose /DMO/I_Agency;
+  expose /DMO/I_Customer;
+}

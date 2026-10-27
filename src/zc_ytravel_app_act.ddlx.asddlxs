@@ -1,0 +1,96 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'TravelID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'TravelID'
+annotate view ZC_YTRAVEL_APP_ACT with
+{
+  
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 20 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  
+  @EndUserText.label: 'TravelUUID'
+  @UI.identification: [ { position: 10 , label: 'TravelUUID' } ]
+  @UI.lineItem: [ { position: 10, label: 'Travel Uuid' },
+                  { position: 10, label: 'I:Modify Status', type: #FOR_ACTION, dataAction: 'ModifyStatus' }, 
+                  { position: 11, label: 'I:Price', type: #FOR_ACTION, dataAction: 'TotalPrice' },
+                  { position: 12, label: 'I:Show Price', type: #FOR_ACTION, dataAction: 'DisplayPrice', invocationGrouping: #CHANGE_SET },
+                  { position: 13, label: 'I:Status Update', type: #FOR_ACTION, dataAction: 'StatusUpdate', invocationGrouping: #ISOLATED }, 
+                //Action grouping
+                  { position: 14, label: 'I:Change Status', type: #FOR_ACTION_GROUP, actionGroupId: 'Menu-chnagestatus'  },
+                  { type: #FOR_ACTION, label: ':Accept Travel', dataAction: 'AcceptTravel', actionGroupId: 'Menu-chnagestatus' },
+                  { type: #FOR_ACTION, label: 'Reject Travel', dataAction: 'RejectTravel', actionGroupId: 'Menu-chnagestatus' }, 
+                  { position: 15, label: 'FI:Copy Travel', type: #FOR_ACTION, dataAction: 'CopyTravel' },
+                  { position: 16, label: 'FS:Create Travel', type: #FOR_ACTION, dataAction: 'CreateTravel'  }
+                  ]
+  TravelUUID;
+
+  @UI.identification: [ { position: 20 ,label: 'TravelId'  } ]
+  @UI.lineItem: [ { position: 20 , label: 'TravelId' } ]
+ @UI.selectionField: [ { position: 10 } ]
+  TravelID;
+  
+  @UI.identification: [ { position: 30  } ]
+  @UI.lineItem: [ {  position: 30  } ]
+  @UI.selectionField: [ { position: 20 } ]
+  AgencyID;
+  
+  @UI.identification: [ {position: 40 } ]
+  @UI.lineItem: [ {position: 40 } ]
+  @UI.selectionField: [ {position: 30 } ]
+  CustomerID;
+  
+  @UI.identification: [ {position: 50 } ]
+  @UI.lineItem: [{position: 50 } ]
+  BeginDate;
+  
+  @UI.identification: [ { position: 60 } ]
+  @UI.lineItem: [ {position: 60 } ]
+  EndDate;
+  
+  @UI.identification: [ { position: 70 } ]
+  @UI.lineItem: [ { position: 70 } ]
+  Description;
+  
+  @UI.textArrangement: #TEXT_ONLY
+  @UI.identification: [ {position: 80 } ]
+  @UI.lineItem: [ { position: 80 } ]
+   @UI.selectionField: [ { position: 40 } ]
+  Status;
+  @UI.identification: [ { position: 90, label: 'Booking Fee' } ]
+  @UI.lineItem: [ { position: 81, label: 'Booking Fee' } ]
+  BookingFee;
+    @UI.identification: [ { position: 100, label: 'Total Price' } ]
+  @UI.lineItem: [ { position: 82, label: 'Total Price' } ]
+  TotalPrice;
+  
+  @UI.hidden: true
+  CurrencyCode;
+    
+ // @UI.identification: [ {position: 90 } ]
+  @UI.lineItem: [ {position: 90 } ]
+  CreatedBy;
+  
+ // @UI.identification: [ {position: 100 } ]
+  @UI.lineItem: [ {position: 100 } ]
+  CreatedAt;
+  
+ // @UI.identification: [ {position: 110 } ]
+  @UI.lineItem: [ {position: 110 } ]
+ 
+  LastChnagedBy;
+  
+ // @UI.identification: [ { position: 120 } ]
+  @UI.lineItem: [ { position: 120 } ]
+
+  LastChnagedAt;
+  
+  //@UI.identification: [ {position: 130 } ]
+  @UI.lineItem: [ { position: 130 } ]
+  LocalLastChnaged;
+}

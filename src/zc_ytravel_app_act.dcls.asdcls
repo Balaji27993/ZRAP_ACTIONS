@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZC_YTRAVEL_APP_ACT'
+@MappingRole: true
+define role ZC_YTRAVEL_APP_ACT {
+  grant select on ZC_YTRAVEL_APP_ACT
+  where INHERITING CONDITIONS FROM ENTITY ZR_YTRAVEL_APP_ACT REPLACING { ROOT WITH _BaseEntity };
+}

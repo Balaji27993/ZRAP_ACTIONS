@@ -1,0 +1,16 @@
+CLASS zbp_r_ytravel_app_act DEFINITION
+  PUBLIC
+  ABSTRACT
+  FINAL
+  FOR BEHAVIOR OF zr_ytravel_app_act .
+
+  PUBLIC SECTION.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+
+CLASS zbp_r_ytravel_app_act IMPLEMENTATION.
+ENDCLASS.

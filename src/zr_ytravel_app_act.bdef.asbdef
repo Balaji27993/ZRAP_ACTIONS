@@ -1,0 +1,85 @@
+managed implementation in class ZBP_R_YTRAVEL_APP_ACT unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_YTRAVEL_APP_ACT alias Travel
+persistent table YTRAVEL_APP_ACT
+extensible
+draft table ZYTRVL_APP_ACT_D
+etag master LastChnagedAt
+lock master total etag LocalLastChnaged
+authorization master( global )
+early numbering
+{
+//  field ( mandatory : create )
+//   TravelID;
+
+  field ( readonly )
+   TravelUUID,
+   CreatedBy,
+   CreatedAt,
+   LastChnagedBy,
+   LastChnagedAt,
+   LocalLastChnaged;
+
+//  field ( numbering : managed )
+//   TravelUUID;
+
+  field ( readonly : update )
+   TravelID;
+
+
+  create;
+  update; //( features : global);
+  delete;//( features : instance );
+  // update the status for multiple record with out conditon
+  // action ModifyStatus parameter zstatus_str; //parametr used as structure
+  // action ModifyStatus parameter Zabstract_entity; //parameter for abstact entity dropdown values
+   action ModifyStatus parameter ZABSTRACT_F4; //parametr with F4 values
+  // Update the Total price and show in total price column
+  action TotalPrice result [1] $self;         //( features : global, features : instance ) ;
+  //show the total price for selcetd rows in information message
+  action DisplayPrice result [1] $self;
+  // update the status for multiple record based on conditon
+  action StatusUpdate result [1] $self;
+  //Action grouping
+  action( features : instance ) AcceptTravel result [1] $self;
+  action( features : instance ) RejectTravel result [1] $self;
+  //Factory actions
+  factory action CopyTravel[1];
+  //Static Factoty action
+  //it will create seperate action in UI and it will create travel entry with some default data
+  static factory action CreateTravel[1];
+ //it won't show any seperate button UI. while clcik on Create Button it will show popup and we are
+ //passing some data and based on that data it will create the entry
+  static default factory action createdata parameter zstr_travel_popup[1];
+
+
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for YTRAVEL_APP_ACT corresponding extensible
+  {
+    TravelUUID = TRAVEL_UUID;
+    TravelID = TRAVEL_ID;
+    AgencyID = AGENCY_ID;
+    CustomerID = CUSTOMER_ID;
+    BeginDate = BEGIN_DATE;
+    EndDate = END_DATE;
+    Description = DESCRIPTION;
+    Status = STATUS;
+    BookingFee = booking_fee;
+    TotalPrice = total_price;
+    CurrencyCode = currency_code;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChnagedBy = LAST_CHNAGED_BY;
+    LastChnagedAt = LAST_CHNAGED_AT;
+    LocalLastChnaged = LOCAL_LAST_CHNAGED;
+  }
+
+}

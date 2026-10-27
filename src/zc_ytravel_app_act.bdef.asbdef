@@ -1,0 +1,28 @@
+projection implementation in class ZBP_C_YTRAVEL_APP_ACT unique;
+strict ( 2 );
+extensible;
+use draft;
+use side effects;
+define behavior for ZC_YTRAVEL_APP_ACT alias ZcYtravelAppAct
+extensible
+use etag
+{
+  use create;
+  use update;
+  use delete;
+  use action ModifyStatus; //instance action
+  use action TotalPrice;   //Instance Action
+  use action DisplayPrice;
+  use action StatusUpdate;
+  use action AcceptTravel;
+  use action RejectTravel;
+  use action CopyTravel; //Factory Action
+  use action CreateTravel; //Static factory action
+  use action createdata; //static default factory action
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+}
